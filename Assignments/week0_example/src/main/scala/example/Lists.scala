@@ -1,6 +1,8 @@
 package example
 
 import common._
+import math._
+import java.util.NoSuchElementException
 
 object Lists {
   /**
@@ -23,7 +25,7 @@ object Lists {
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
-  def sum(xs: List[Int]): Int = ???
+  def sum(xs: List[Int]): Int = if (xs.isEmpty) 0 else xs.reduce(_ + _)
 
   /**
    * This method returns the largest element in a list of integers. If the
@@ -38,5 +40,7 @@ object Lists {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-  def max(xs: List[Int]): Int = ???
+  def max(xs: List[Int]): Int = 
+    if (xs.isEmpty) throw new java.util.NoSuchElementException()          
+    else xs.reduce(math.max(_, _))
 }
